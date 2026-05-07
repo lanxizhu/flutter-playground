@@ -34,6 +34,7 @@ class AnimatedBottomBarState extends State<AnimatedBottomBar>
   Widget build(BuildContext context) {
     return Material(
       elevation: 0,
+      color: Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.only(
           bottom: 0,

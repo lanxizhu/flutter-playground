@@ -54,7 +54,9 @@ class BottomBarNavigationState extends State<BottomBarNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Container(
+      color: ColorScheme.of(context).surface,
+      child: SafeArea(
       maintainBottomViewPadding: false,
       bottom: true,
       child: AnimatedBottomBar(

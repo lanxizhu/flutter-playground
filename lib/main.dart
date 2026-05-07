@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:playground/core/widgets/bottom_nav.dart';
 import 'package:playground/features/home/pages/home_page.dart';
+import 'package:playground/features/profile/pages/mine_page.dart';
 import 'package:playground/features/welcome/pages/welcome_page.dart';
 
 void main() {
@@ -16,24 +17,6 @@ class CategoryPage extends StatelessWidget {
   }
 }
 
-class MessagePage extends StatelessWidget {
-  const MessagePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Search'));
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Profile'));
-  }
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -42,7 +25,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      themeMode: ThemeMode.system,
       theme: ThemeData(
+        useMaterial3: true,
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -91,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage>
     const WelcomePage(),
     const CategoryPage(),
     const HomePage(),
-    const ProfilePage(),
+    const MinePage(),
   ];
 
   @override
@@ -109,6 +94,7 @@ class _MyHomePageState extends State<MyHomePage>
       //   // the App.build method, and use it to set our appbar title.
       //   title: Text(widget.title),
       // ),
+      // extendBody: true,
       body: pages[currentIndex],
       bottomNavigationBar: BottomBarNavigation(
         currentIndex: currentIndex,
