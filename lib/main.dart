@@ -85,9 +85,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-  int _counter = 0;
-  late final AnimationController _animationController;
-
   late int currentIndex = 2;
 
   final List<Widget> pages = [
@@ -98,33 +95,7 @@ class _MyHomePageState extends State<MyHomePage>
   ];
 
   @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-    // 只有在动画未执行时才播放动画
-    if (!_animationController.isAnimating) {
-      _animationController.reset();
-      _animationController.forward();
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
@@ -139,36 +110,6 @@ class _MyHomePageState extends State<MyHomePage>
       //   title: Text(widget.title),
       // ),
       body: pages[currentIndex],
-      // bottomNavigationBar: NavigationBar(
-      //   selectedIndex: currentIndex,
-      //   onDestinationSelected: (index) {
-      //     setState(() {
-      //       currentIndex = index;
-      //     });
-      //   },
-      //   destinations: const [
-      //     NavigationDestination(
-      //       icon: Icon(Icons.home_outlined),
-      //       selectedIcon: Icon(Icons.home),
-      //       label: '首页',
-      //     ),
-      //     NavigationDestination(
-      //       icon: Icon(Icons.category_outlined),
-      //       selectedIcon: Icon(Icons.category),
-      //       label: '分类',
-      //     ),
-      //     NavigationDestination(
-      //       icon: Icon(Icons.message_outlined),
-      //       selectedIcon: Icon(Icons.message),
-      //       label: '消息',
-      //     ),
-      //     NavigationDestination(
-      //       icon: Icon(Icons.person_outline),
-      //       selectedIcon: Icon(Icons.person),
-      //       label: '我的',
-      //     ),
-      //   ],
-      // ),
       bottomNavigationBar: BottomBarNavigation(
         currentIndex: currentIndex,
         onDestinationSelected: (index) {
