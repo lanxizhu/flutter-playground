@@ -38,7 +38,7 @@ class AnimatedBottomBarState extends State<AnimatedBottomBar>
       child: Padding(
         padding: const EdgeInsets.only(
           bottom: 0,
-          top: 16.0,
+          top: 10.0,
           left: 16.0,
           right: 16.0,
         ),
@@ -82,7 +82,9 @@ class AnimatedBottomBarState extends State<AnimatedBottomBar>
               children: <Widget>[
                 Icon(
                   isSelected ? item.selectData : item.iconData,
-                  color: isSelected ? item.color : Colors.black,
+                  color: isSelected
+                      ? item.color
+                      : ColorScheme.of(context).onSurface.withAlpha(150),
                   size: widget.barStyle.iconSize,
                 ),
                 AnimatedSize(

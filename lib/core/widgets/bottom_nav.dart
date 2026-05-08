@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:playground/core/widgets/animated_bottom_bar.dart';
 
@@ -54,22 +56,51 @@ class BottomBarNavigationState extends State<BottomBarNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: ColorScheme.of(context).surface,
-      child: SafeArea(
-      maintainBottomViewPadding: false,
-      bottom: true,
-      child: AnimatedBottomBar(
-        barItems: widget.barItems,
-        animationDuration: const Duration(milliseconds: 150),
-        barStyle: BarStyle(fontSize: 20.0, iconSize: 30.0),
-        selectedIndex: selectedBarIndex,
-        onBarTap: (index) {
-          setState(() {
-            widget.onDestinationSelected?.call(index);
-            selectedBarIndex = index;
-          });
-        },
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
+      ),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 50),
+        child: Container(
+          decoration: BoxDecoration(
+            // color: ColorScheme.of(context).surface.withValues(alpha: 0.3),
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                ColorScheme.of(context).surface.withValues(alpha: 0),
+                ColorScheme.of(context).surface.withValues(alpha: 0.45),
+                ColorScheme.of(context).surface,
+              ],
+            ),
+          ),
+          child: Container(
+            color: Colors.transparent,
+            child: SafeArea(
+              maintainBottomViewPadding: false,
+              bottom: true,
+
+              child: AnimatedBottomBar(
+                barItems: widget.barItems,
+                animationDuration: const Duration(milliseconds: 150),
+                barStyle: BarStyle(fontSize: 20.0, iconSize: 30.0),
+                selectedIndex: selectedBarIndex,
+                onBarTap: (index) {
+                  setState(() {
+                    widget.onDestinationSelected?.call(index);
+                    selectedBarIndex = index;
+                  });
+                },
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

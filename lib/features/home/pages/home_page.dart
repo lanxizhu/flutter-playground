@@ -52,9 +52,17 @@ class _HomePageState extends State<HomePage> {
               crossAxisCount: 2,
             ),
             delegate: SliverChildBuilderDelegate(
-              (context, index) => Card(child: Center(child: Text('商品 $index'))),
+              (context, index) => Container(
+                color: Colors.blueGrey[100],
+                child: Card(child: Center(child: Text('商品 $index'))),
+              ),
+
               childCount: 10,
             ),
+          ),
+
+          SliverToBoxAdapter(
+            child: SizedBox(height: MediaQuery.of(context).padding.bottom),
           ),
         ],
       ),

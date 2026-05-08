@@ -77,7 +77,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-  late int _currentIndex = 2;
+  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage>
       //   // the App.build method, and use it to set our appbar title.
       //   title: Text(widget.title),
       // ),
-      // extendBody: true,
+      extendBody: true,
       body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: BottomBarNavigation(
         currentIndex: _currentIndex,
