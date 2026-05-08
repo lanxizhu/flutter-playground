@@ -77,14 +77,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-  late int currentIndex = 2;
+  late int _currentIndex = 2;
 
   @override
   void initState() {
     super.initState();
   }
 
-  late List<Widget> pages = [
+  late final List<Widget> _pages = [
     const WelcomePage(),
     const CategoryPage(),
     const HomePage(),
@@ -107,12 +107,12 @@ class _MyHomePageState extends State<MyHomePage>
       //   title: Text(widget.title),
       // ),
       // extendBody: true,
-      body: pages[currentIndex],
+      body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: BottomBarNavigation(
-        currentIndex: currentIndex,
+        currentIndex: _currentIndex,
         onDestinationSelected: (index) {
           setState(() {
-            currentIndex = index;
+            _currentIndex = index;
           });
         },
       ),
