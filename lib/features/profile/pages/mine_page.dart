@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:playground/app/controllers/theme_controller.dart';
 
 class MinePage extends StatefulWidget {
-  const MinePage({super.key});
+  const MinePage({super.key, required this.themeController});
+
+  final ThemeController themeController;
 
   @override
   State<MinePage> createState() => _MinePageState();
 }
 
 class _MinePageState extends State<MinePage> {
-  late final Brightness brightness;
-  late bool isDark;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    brightness = Theme.of(context).brightness;
-    isDark = brightness == Brightness.dark;
-  }
-
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       decoration: BoxDecoration(
         // 渐变背景
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Colors.cyan[300]!, Theme.of(context).colorScheme.surface],
+          colors: [
+            Colors.cyan[isDark ? 800 : 300]!,
+            Theme.of(context).colorScheme.surface,
+          ],
         ),
         // 或者图片背景
         // image: DecorationImage(
@@ -47,6 +45,17 @@ class _MinePageState extends State<MinePage> {
                 Text(
                   'Profile Page',
                   style: TextTheme.of(context).headlineLarge,
+                ),
+
+                Switch(
+                  value: isDark,
+                  onChanged: (bool value) {
+                    if (value) {
+                      widget.themeController.useDarkMode();
+                    } else {
+                      widget.themeController.useLightMode();
+                    }
+                  },
                 ),
               ],
             ),
