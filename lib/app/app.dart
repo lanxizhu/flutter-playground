@@ -42,6 +42,7 @@ class _MyAppState extends State<MyApp> {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: themeController.themeMode,
+          debugShowCheckedModeBanner: false,
           home: MyHomePage(
             title: 'Flutter Demo Home Page',
             themeController: themeController,
