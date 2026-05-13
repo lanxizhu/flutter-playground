@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:playground/features/home/widgets/banner_swiper.dart';
+import 'package:playground/features/home/widgets/image_cloumn.dart';
 
 import '../widgets/home_header.dart';
 
@@ -128,6 +129,21 @@ class _HomePageState extends State<HomePage> {
 
                     // 这里可以放从 Provider 获取的 Banners 列表
                     BannerSwiper(),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(
+                          "assets/img-2.jpg",
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          height: 120,
+                        ),
+                      ),
+                    ),
+
+                    const ImageGrid(),
                   ],
                 ),
               ),
