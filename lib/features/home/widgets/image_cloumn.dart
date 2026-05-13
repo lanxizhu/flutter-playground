@@ -10,13 +10,13 @@ class ImageGrid extends StatelessWidget {
     const borderRadius = BorderRadius.all(Radius.circular(16));
 
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 12),
+      margin: const EdgeInsets.only(top: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorScheme.of(context).surface,
         borderRadius: borderRadius,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha(50),
+            color: ColorScheme.of(context).shadow.withAlpha(60),
             spreadRadius: 2,
             blurRadius: 10,
             offset: Offset(0, 10),
